@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Functional Programming in Python 🐍</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>Functional Programming in Python 🐍</section>
+                <section>
+                    <h2>About me</h2>
+                    <p>Riccardo aka <a href="https://twitter.com/entropiae">@entropiae</a></p>
+                    <p>Python in the streets<br>Erlang/Elixir (currently) in the sheets</p>
+                </section>
+
+                <section id="fragments">
+                    <section>
+                        <h2>Functional programming? 🤔</h2>
+                        <p class="fragment">
+                            (almost) every developer has its own idea about functional programming.
+                        </p>
+                    </section>
+                    <section>
+                        First-class functions
+                        <aside class="notes">Permits to treat functions as data, passed to other functions</aside>
+                    </section>
+                    <section>
+                        Higher-order functions
+                        <aside class="notes">Functions whose accept other functions as arguments, return functions</aside>
+                    </section>
+                    <section>
+                        Recursion instead of iteration
+                        <p class="fragment">Focus on Tail Call Optimization</p>
+                        <p class="fragment"><a href="http://neopythonic.blogspot.it/2009/04/final-words-on-tail-calls.html">(not available in Python 😥)</a>
+                        </p>
+                    </section>
+                    <section>
+                        Immutable data structures
+                    </section>
+                    <section>
+                        Lazy evaluation
+                        <pre>
+                            <code data-trim data-noescape>len([1, 1/0, '3']) == 3</code>
+                        </pre>
+                    </section>
+                    <section>
+                        Emphasis on <b>what</b> is done, not on <s>how</s> is done
+                    </section>
+                </section>
+
+                <section id="fragments">
+                    <section>
+                        <h2>Ok ok, functions.</h2>
+                    </section>
+                    <section>
+                        (Mathematical) functions
+                    </section>
+                    <section>
+                        Pure functions
+                        <p class="fragment">No side effects</p>
+                        <p class="fragment">Perfectly pure, almost useless</p>
+                        <p class="fragment"><i>Practicality beats purity.</i></p>
+                    </section>
+                    <section>
+                        Referential transparency
+                        <p class="fragment">Memoization</p>
+                    </section>
+                    <section>
+                        No order constraint
+                        <p class="fragment">Full support for Multi{core, cpu, node} archs</p>
+                        <p class="fragment">Compiler optimization</p>
+                    </section>
+                </section>
+
+                <section>
+                    <section><h2>Python as a functional programming language?</h2></section>
+                    <section>Python is not, by design, a FP language</section>
+                    <section>
+                        However..
+                        <p class="fragment">..coz everything is an object..</p>
+                        <p class="fragment">..we have first-class functions! 🎉</p>
+                    </section>
+                    <section>
+                        1994: higher-order functions were introduced in Python
+                    </section>
+                    <section>
+                        map: transform a collection
+                        <pre><code data-trim data-noescape>map(lambda x: x + 1, [1, 2, 3]) == [2, 3, 4]</code></pre>
+                    </section>
+                    <section>
+                        filter: remove elements from a collection
+                        <pre><code data-trim data-noescape>filter(lambda x: x % 2 == 0, [1, 2, 3]) == [2]</code></pre>
+                    </section>
+                    <section>
+                        reduce: recursively apply an operation on a collection
+                        <pre><code data-trim data-noescape>reduce(lambda x, y: x + y, [1, 2, 3]) == 6</code></pre>
+                        <p class="fragment">The cornestone of higher-order functions</p>
+                    </section>
+
+                    <section>
+                        map() and filter() could be replaced with a list comprehension
+                        <p class="fragment"><i>There should be one - and preferably only one - obvious way to do it.</i></p>
+                        <p class="fragment">GvR doesn't like them 😕</p>
+                    </section>
+
+                    <section>
+                        It was proposed to remove them from Python 3
+                    </section>
+
+                    <section>
+                        More functions were build on these building blocks
+                        <p class="fragment">functools, itertools</p>
+                    </section>
+                </section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
